@@ -16,14 +16,14 @@ const promptUser = () => {
             name: 'shape',
             message: questions[0],
             choices: [
-                "Triangle",
-                "Circle",
-                "Square"
+                "triangle",
+                "circle",
+                "square"
             ]
         },
         {
             type: 'list',
-            name: 'shape-color',
+            name: 'shapeColor',
             message: questions[1],
             choices: [
                 "Red",
@@ -43,7 +43,7 @@ const promptUser = () => {
         },
         {
             type: 'list',
-            name: 'text-color',
+            name: 'textColor',
             message: questions[3],
             choices: [
                 "Red",
@@ -56,14 +56,14 @@ const promptUser = () => {
                 "Orange",
             ]
         }
-    ])
-}
+    ]);
+};
 
 
 
 
 function writeToFile(svg, data) {
-    svg = generate.shapes(data);
+    svg = generate.generateMarkdown(data);
 
     return svg;
 };
