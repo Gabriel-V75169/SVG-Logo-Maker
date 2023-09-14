@@ -1,6 +1,8 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
-const generate = require('./lib/shapes');
+const {shapes, Circle, Square, Triangle} = require('./lib/shapes');
+
+
 
 const questions = [
     "What shape would you like to use ?",
@@ -63,7 +65,18 @@ const promptUser = () => {
 
 
 function writeToFile(svg, data) {
-    svg = generate.generateMarkdown(data);
+    if(data.shape == "circle"){
+        currentShape = new Circle(data.shapeColor, data.text, data.textColor)
+    }
+
+    if(data.shape == "square"){
+        currentShape = new Square(data.shapeColor, data.text, data.textColor)
+    }
+
+    if(data.shape == "triangle"){
+        currentShape = new Triangle(data.shapeColor, data.text, data.textColor)
+    }
+    svg = shapes(currentShape.render());
 
     return svg;
 };
